@@ -37,7 +37,7 @@ jobs:
       max-model-len: '2048'
       random-range-ratio: '0.8'
       runner: 'mi355x-amd_4'
-      image: 'rocm/pytorch-private:atom_dev'
+      image: 'rocm/atom:rocm_7.2_preview_latest'
       model: 'openai/gpt-oss-120b'
       model-prefix: 'gptoss'
       tp: ${{ matrix.tp }}
@@ -65,7 +65,7 @@ jobs:
       max-model-len: '16384'
       random-range-ratio: '0.8'
       runner: 'mi355x-amd_4'
-      image: 'rocm/pytorch-private:atom_dev'
+      image: 'rocm/atom:rocm_7.2_preview_latest'
       model: 'openai/gpt-oss-120b'
       model-prefix: 'gptoss'
       tp: ${{ matrix.tp }}
@@ -93,7 +93,7 @@ jobs:
       max-model-len: '16384'
       random-range-ratio: '0.8'
       runner: 'mi355x-amd_4'
-      image: 'rocm/pytorch-private:atom_dev'
+      image: 'rocm/atom:rocm_7.2_preview_latest'
       model: 'openai/gpt-oss-120b'
       model-prefix: 'gptoss'
       tp: ${{ matrix.tp }}

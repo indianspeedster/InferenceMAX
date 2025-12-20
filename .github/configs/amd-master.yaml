@@ -178,7 +178,7 @@ gptoss-fp4-mi355x-vllm:
     - { tp: 8, conc-start: 4, conc-end: 8 }
 
 gptoss-fp4-mi355x-atom:
-  image: rocm/pytorch-private:atom_dev
+  image: rocm/atom:rocm_7.2_preview_latest
   model: openai/gpt-oss-120b
   model-prefix: gptoss
   runner: mi355x
@@ -206,7 +206,7 @@ gptoss-fp4-mi355x-atom:
     - { tp: 8, conc-start: 4, conc-end: 8 }
 
 dsr1-fp4-mi355x-atom:
-  image: rocm/pytorch-private:atom_dev
+  image: rocm/atom:rocm_7.2_preview_latest
   model: amd/DeepSeek-R1-0528-MXFP4-Preview
   model-prefix: dsr1
   runner: mi355x
@@ -229,7 +229,7 @@ dsr1-fp4-mi355x-atom:
     - { tp: 8, conc-start: 4, conc-end: 64 }
 
 dsr1-fp8-mi355x-atom:
-  image: rocm/pytorch-private:atom_dev
+  image: rocm/atom:rocm_7.2_preview_latest
   model: deepseek-ai/DeepSeek-R1-0528
   model-prefix: dsr1
   runner: mi355x
