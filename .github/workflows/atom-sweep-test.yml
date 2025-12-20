@@ -111,4 +111,4 @@ jobs:
     uses: ./.github/workflows/collect-results.yml
     secrets: inherit
     with:
-      exp-name: 'gptoss'
+      result-prefix: 'bmk'
