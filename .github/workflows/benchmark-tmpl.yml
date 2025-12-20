@@ -116,13 +116,13 @@ jobs:
                 # nvidia-smi --gpu-reset -i 0,1,2,3,4,5,6,7 2>/dev/null || true
               fi
             else
-              echo "[Docker] Cleaning up resources ..."
-              docker ps -aq | xargs -r docker rm -f
-              docker network prune -f
-              while [ -n "$(docker ps -aq)" ]; do
-                docker ps -a
-                sleep 5
+              echo "[Docker] Cleaning up benchmark resources ..."
+              # Only remove benchmark containers, skip system services like node-exporter
+              for cid in $(docker ps -aq --filter "name=bmk-" 2>/dev/null); do
+                echo "[INFO] Removing benchmark container $cid"
+                docker rm -f "$cid" || true
               done
+              docker network prune -f
             fi
           fi
           if command -v squeue >/dev/null 2>&1; then
