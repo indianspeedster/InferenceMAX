@@ -13,11 +13,15 @@
 # GITHUB_WORKSPACE
 # RESULT_FILENAME
 # HF_TOKEN
+# FRAMEWORK
 
 HF_HUB_CACHE_MOUNT="/nfsdata/hf_hub_cache-1/"  # Temp solution
 PORT=8888
 
 server_name="bmk-server"
+
+# Determine framework suffix for benchmark script
+FRAMEWORK_SUFFIX=$([[ "$FRAMEWORK" == "atom" ]] && printf '_atom' || printf '')
 
 if [[ "$MODEL" == "amd/DeepSeek-R1-0528-MXFP4-Preview" || "$MODEL" == "deepseek-ai/DeepSeek-R1-0528" ]]; then
   if [[ "$OSL" == "8192" ]]; then
@@ -39,7 +43,7 @@ docker run --rm --ipc=host --shm-size=16g --network=host --name=$server_name \
 -e ISL -e OSL -e PYTHONPYCACHEPREFIX=/tmp/pycache/ -e RANDOM_RANGE_RATIO -e RESULT_FILENAME  \
 --entrypoint=/bin/bash \
 $IMAGE \
-benchmarks/"${EXP_NAME%%_*}_${PRECISION}_mi355x_docker.sh"
+benchmarks/"${EXP_NAME%%_*}_${PRECISION}_mi355x${FRAMEWORK_SUFFIX}_docker.sh"
 
 if ls gpucore.* 1> /dev/null 2>&1; then
   echo "gpucore files exist. not good"
