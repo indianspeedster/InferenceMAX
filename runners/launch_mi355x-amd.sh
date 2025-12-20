@@ -15,6 +15,11 @@
 # HF_TOKEN
 # FRAMEWORK
 
+# For ATOM framework, use the dedicated ATOM runner script
+if [[ "$FRAMEWORK" == "atom" ]]; then
+  exec bash "$(dirname "$0")/launch_mi355x-amdatom.sh"
+fi
+
 HF_HUB_CACHE_MOUNT="/nfsdata/hf_hub_cache-1/"  # Temp solution
 PORT=8888
 
